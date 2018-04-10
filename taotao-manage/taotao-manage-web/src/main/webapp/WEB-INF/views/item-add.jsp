@@ -118,10 +118,11 @@
 		   url: "/rest/item",
 		   data: $("#itemAddForm").serialize(),
 		   success: function(msg){
+		       console.log($("#itemAddForm").serialize());
 			   $.messager.alert('提示','新增商品成功!');
 		   },
 		   error: function(){
-			   $.messager.alert('提示','新增商品失败!');
+               $.messager.alert('提示','新增商品失败!');
 		   }
 		});
 	}
