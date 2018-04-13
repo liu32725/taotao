@@ -30,7 +30,8 @@ public class ItemController {
     
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> saveItem(Item item, @RequestParam("desc") String desc) {
+    public ResponseEntity<Void> saveItem(Item item, @RequestParam("desc") String desc,
+                                         @RequestParam("itemParams")String itemParams) {
         try {
             if(LOGGER.isDebugEnabled()) {
                 LOGGER.debug("新增商品，item = {}，desc = {}", item, desc);
@@ -39,7 +40,7 @@ public class ItemController {
             if(StringUtils.isEmpty(item.getTitle())){
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
             }
-            boolean bool = itemService.saveItem(item, desc);
+            boolean bool = itemService.saveItem(item, desc, itemParams);
             if(!bool) {
                 if(LOGGER.isInfoEnabled()) {
                     LOGGER.info("新增商品失败，item = {}", item);
@@ -70,6 +71,23 @@ public class ItemController {
             e.printStackTrace();
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<Void> updateItem(Item item, @RequestParam("desc")String desc,
+                                           @RequestParam("itemParams")String itemParams) {
+        try {
+            if (StringUtils.isEmpty(item.getTitle()) || StringUtils.length(item.getTitle()) > 100) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            }
+            boolean b = itemService.updateItem(item, desc, itemParams);
+            if(b) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/taotao-manage/taotao-manage-web" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-web" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>false</service-enabled>
@@ -15,6 +16,7 @@
         <option value="$PROJECT_DIR$/taotao-parent/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-common/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-manage/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-web/pom.xml" />
       </list>
     </option>
   </component>

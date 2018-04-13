@@ -112,7 +112,6 @@
 				});
 		   },
 		   error: function(){
-		       console.log($("#itemeEditForm").serialize());
 			   $.messager.alert('提示','修改商品失败!');
 		   }
 		});
